@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: local
+  mvc:
+    pathmath:
+      matching-strategy: ant-patch-matcher
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hospital-api
+    username: postgres
+    password: jucaprevost21112004
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.default_schema: public
+    show-sql: true
