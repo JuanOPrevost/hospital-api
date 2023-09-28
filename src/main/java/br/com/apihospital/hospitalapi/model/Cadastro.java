@@ -1,11 +1,11 @@
 package br.com.apihospital.hospitalapi.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
+@Builder
 @Entity(name = "tb_cliente")
 public class Cadastro {
 

@@ -26,7 +26,7 @@ public class CadastroController {
                                            @RequestParam String cnpj) {
 
         Hospital hospital = hospitalService.buscarPorCnpj(cnpj);
-        hospital.setCnpj(cnpj);
+        cadastro.setHospital(hospital);
 
         try {
             cadastroService.adicionar(cadastro);
