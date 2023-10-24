@@ -7,10 +7,13 @@ import br.com.apihospital.hospitalapi.service.CadastroService;
 
 import org.junit.jupiter.api.Test;
 
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -26,10 +29,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 
 @WebMvcTest
+@SpringBootTest
+@ContextConfiguration(classes = CadastroTest.class)
 public class CadastroTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Mock
+    private Cadastro cadastro;
 
     @MockBean
     private CadastroService cadastroService;
@@ -51,7 +59,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua ......")
+                .endereco("Rua Onze de Junho")
                 .build();
         given(cadastroService.adicionar(any(Cadastro.class)))
                 .willAnswer((invocation)-> invocation.getArguments()[0]);
@@ -98,7 +106,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......").build());
+                .endereco("Rua Onze de Junho").build());
                 given(cadastroService.listarTodos()).willReturn(cadastroList);
 
 
@@ -129,7 +137,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
         given(cadastroService.buscarPorId(cadastroId)).willReturn(cadastro);
 
@@ -173,7 +181,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
         given(cadastroService.buscarPorId(cadastroId)).willReturn(cadastro);
 
@@ -202,7 +210,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
 
 
@@ -213,7 +221,7 @@ public class CadastroTest {
                 .idade("19 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
         given(cadastroService.buscarPorId(cadastroId)).willReturn(cadastro);
         given(cadastroService.atualizar(cadastro,anyInt()))
@@ -260,7 +268,7 @@ public class CadastroTest {
                 .idade("18 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
 
 
@@ -271,7 +279,7 @@ public class CadastroTest {
                 .idade("19 anos")
                 .sexo("Masculino")
                 .numeroDeTelefone("21 951017195")
-                .endereco("Rua......")
+                .endereco("Rua Onze de Junho")
                 .build();
         given(cadastroService.buscarPorId(cadastroId)).willReturn(null);
         given(cadastroService.atualizar(cadastro,anyInt()))
